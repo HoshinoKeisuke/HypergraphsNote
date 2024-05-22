@@ -1,0 +1,116 @@
+\documentclass[a4paper,dvipsnames, 11pt]{amsart} %pdf latex
+\usepackage{preamble}
+
+\begin{document}
+\maketitle
+\cite{FS19}
+\begin{notation}
+	We employ the following notations.
+	\begin{itemize}
+		\item %
+			For each category $\one{C}$,
+			we write $\core{\one{C}}$ for the core groupoid of $\one{C}$.
+		\item %
+			For each groupoid $\one{G}$, we write $\pi_0(\one{G})$ for the set of connected components of $\one{G}$.
+		\item %
+			For each category $\one{C}$ and an object $c\in\one{C}$,
+			we write $\one{C}_{c/}$ and $\one{C}_{/c}$ for the under category and the over category.
+		\item %
+			For each category $\one{C}$ and an object $c\in\one{C}$,
+			the domain part defines a functor $\one{C}_{/c}\arr"\Sigma_c"\one{C}$,
+			and we write $c^*$ and $\Pi_c$ for the right adjoints of $\Sigma_c$ and $c^*$ respectively,
+			if exists.
+
+			The dual of $\Sigma_c$, $c^*$, and $\Pi_c$ are
+			denoted by $\arbSigma_c\colon\one{C}\arr\one{C}_{c/}$, $c_*\colon\one{C}_{c/}\arr\one{C}$, and $\arbPi_c\colon\one{C}\arr\one{C}_{c/}$.
+		\item %
+			We write $\Set$ for the catgeory of sets.
+		\item %
+			For each nonnegative integer $n$,
+			we write $\bar{n}$ for the set $\{1,\ldots,n\}$.
+		\item %
+			We write $\FinSet$ for the catgeory defined as follows.
+			\begin{itemize}
+				\item %
+					$\Obj(\FinSet)=\mathbb{N}$.
+				\item %
+					$\FinSet(n,m)=\Set(\bar{n},\bar{m})$.
+				\item %
+					$n\mapsto\bar{n}$ extends to a fully faithful functor $\FinSet\arr[hook]\Set$.
+			\end{itemize}
+		\item %
+			For each category $\one{C}$ with finite coproducts,
+			we write $-+-$ for the binary coporduct and $\emptyset$ for the initial object.
+
+			We write ${\Atled}_c\colon c+c\arr c$ for the codiagonal.
+	\end{itemize}
+\end{notation}
+
+\begin{definition}
+	Suppose we are given
+	a set $\Lambda\in\Set$.
+	We define a category
+	$\FinSet_\Lambda$ by the following pullback.
+	\[
+		\begin{tikzcd}[row sep=5mm]
+			\FinSet_\Lambda
+			\ar[r]
+			\ar[d]
+			\pullback[rd]
+				&
+				\Set_{/\Lambda}
+				\ar[d,"\Sigma_\Lambda"]
+			\\
+			\FinSet
+			\ar[r,hook]
+				&
+				\Set
+		\end{tikzcd}
+	\]
+	An element of $\FinSet_\Lambda$ is called a
+	\emph{$\lambda$-labelled finite set}.
+\end{definition}
+\begin{proposition}
+	For each $\Lambda\in\Set$,
+	$\FinSet_\Lambda$ has finite colimits.
+\end{proposition}
+\begin{proof}
+	Both $\FinSet\arr[hook]\Set$ and $\Set_{/\Lambda}\arr"\Sigma_\Lambda"\Set$ create finite colimits.
+\end{proof}
+\begin{definition}
+	Let $\one{C}$ be a category with finite colimits.
+	We write $\Cosp[\one{C}]$ for the category defined as follows.
+	\begin{itemize}
+		\item %
+			$\Obj(\Cosp[\one{C}])=\Obj{\one{C}}$.
+		\item %
+			For each $c,c'\in\one{C}$,
+			the homset is defined as
+			\[
+				\Cosp[\one{C}](c,c')=\pi_0\left(\core{(\one{C}_{c+c'/})}\right)
+				\text{.}
+			\]
+		\item %
+			The identity on $c$ is represented by the codiagonal $\Atled\colon c+c\arr c$.
+		\item %
+			The composition is obtained by applying $\pi_0\core{(-)}$ to the following functor.
+			\[
+				\one{C}_{c+c'/}
+				\times
+				\one{C}_{c'+c''/}
+				\arr"+"[][2]
+				\one{C}_{c+c'+c'+c''/}
+				\arr"{(c+\Atled_{c'}+c'')_*}"[][5]
+				\one{C}_{c+c'+c''/}
+				\arr"{\arbSigma_{\inc_{1,3}}}"[][3]
+				\one{C}_{c+c''/}
+			\]
+	\end{itemize}
+\end{definition}
+
+\end{document}
+			$\Cospbi[\one{C}](c,c')$
+			is the category of elements of the following copresheaf.
+			\[
+				\one{C}_{c/}\arr\one{C}\arr"\one{C}(c',-)"[][3]\Set
+			\]
