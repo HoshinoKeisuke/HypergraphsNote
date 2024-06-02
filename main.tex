@@ -50,10 +50,12 @@
 	Suppose we are given
 	a set $\Lambda\in\Set$.
 	We define a category
-	$\FinSet_\Lambda$ by the following pullback.
+	$\FS(\Lambda)$
+	as the following Grothendieck construction.
+	by the following pullback.
 	\[
 		\begin{tikzcd}[row sep=5mm]
-			\FinSet_\Lambda
+			\FS(\Lambda)
 			\ar[r]
 			\ar[d]
 			\pullback[rd]
@@ -67,12 +69,12 @@
 				\Set
 		\end{tikzcd}
 	\]
-	An element of $\FinSet_\Lambda$ is called a
+	An element of $\FS(\Lambda)$ is called a
 	\emph{$\lambda$-labelled finite set}.
 \end{definition}
 \begin{proposition}
 	For each $\Lambda\in\Set$,
-	$\FinSet_\Lambda$ has finite colimits.
+	$\FS(\Lambda)$ has finite colimits.
 \end{proposition}
 \begin{proof}
 	Both $\FinSet\arr[hook]\Set$ and $\Set_{/\Lambda}\arr"\Sigma_\Lambda"\Set$ create finite colimits.
@@ -93,7 +95,7 @@
 		\item %
 			The identity on $c$ is represented by the codiagonal $\Atled\colon c+c\arr c$.
 		\item %
-			The composition is obtained by applying $\pi_0\core{(-)}$ to the following functor.
+			The composition is obtained by applying $\pi_0(\core{(-)})$ to the following functor.
 			\[
 				\one{C}_{c+c'/}
 				\times
@@ -107,6 +109,24 @@
 			\]
 		\qedhere %
 	\end{itemize}
+\end{definition}
+\begin{definition}
+	Let $\Lambda\in\Set$.
+	We write $\Cospfn_\Lambda$ for $\Cosp[\FS(\Lambda)]$.
+\end{definition}
+\begin{proposition}
+	Let $\one{C}$ be a category with finite colimits.
+	Then the coproduct of $\one{C}$ lifts to a dagger compact monoidal structure on $\Cosp[\one{C}]$.
+\end{proposition}
+\begin{proof}
+	Every object $c$ is self-dual by applying $\pi_0(\core{(-)})$ to the cacnonical isomorphism
+	$\one{C}_{(c_0+c)+c_1}\cong\one{C}_{c_0+(c+c_1)}$.
+	The involution
+	$\dagger_{c,c'}\colon\Cosp[\one{C}](c,c')\arr\Cosp[\one{C}](c',c)$
+	is obtained by applying $\pi_0(\core{(-)})$ to the canonical isomorphism
+	$\one{C}_{c+c'/}\cong\one{C}_{c'+c/}$ for any $c,c'\in\one{C}$.
+\end{proof}
+\begin{definition}
 \end{definition}
 
 \end{document}
